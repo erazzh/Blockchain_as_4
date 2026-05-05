@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAO Governance | Kaliyeva Nazerke</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Теплая палитра: "Champagne & Deep Navy" */
+            --bg-gradient: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+            --card-bg: #ffffff;
+            --accent-warm: #d4a373; /* Благородный золотисто-коричневый */
+            --text-dark: #1a1a1a;
+            --text-soft: #706d6d;
+            --success-warm: #588157; /* Приглушенный зеленый */
+            --danger-warm: #bc4749;  /* Глубокий красный */
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg-gradient);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: var(--text-dark);
+        }
+
+        .dao-card {
+            background: var(--card-bg);
+            width: 90%;
+            max-width: 480px;
+            padding: 2.5rem;
+            border-radius: 32px;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.08);
+            border: 1px solid rgba(255,255,255,0.8);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            letter-spacing: -0.02em;
+            margin: 0;
+            color: var(--text-dark);
+        }
+
+        .badge {
+            display: inline-block;
+            background: #faedcd; /* Очень нежный желтый */
+            color: #bc6c25;
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .student-info {
+            font-size: 0.9rem;
+            color: var(--text-soft);
+            margin-top: 0.5rem;
+        }
+
+        /* Статистика */
+        .stats-container {
+            background: #fefae0; /* Мягкий бежевый */
+            border-radius: 24px;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+
+        .stat-item { text-align: left; }
+        .stat-label { font-size: 0.8rem; color: var(--text-soft); margin-bottom: 4px; }
+        .stat-value { font-size: 1.2rem; font-weight: 700; color: var(--text-dark); }
+
+        /* Кнопки */
+        .btn {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 16px;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-main {
+            background: var(--text-dark);
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-main:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .vote-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .btn-vote {
+            background: #fff;
+            border: 2px solid #e9edc9;
+            color: var(--text-dark);
+        }
+
+        .btn-for:hover { 
+            background: var(--success-warm); 
+            color: white; 
+            border-color: var(--success-warm); 
+        }
+
+        .btn-against:hover { 
+            background: var(--danger-warm); 
+            color: white; 
+            border-color: var(--danger-warm); 
+        }
+
+        .proposal-box {
+            border-top: 1px solid #f1f1f1;
+            padding-top: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .proposal-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dao-card">
+        <div class="header">
+            <span class="badge">Kaliyeva Nazerke</span>
+            <h1>University DAO</h1>
+            <div class="student-info">Governance Assignment 2026</div>
+        </div>
+
+        <button class="btn btn-main" id="connectBtn">Connect Wallet</button>
+
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-label">Your Balance</div>
+                <div class="stat-value"><span id="balance">0.00</span> GOV</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-label">Voting Power</div>
+                <div class="stat-value"><span id="votes">0</span></div>
+            </div>
+        </div>
+
+        <div class="proposal-box">
+            <div class="proposal-title">Proposal #01: Treasury Update</div>
+            <p style="color: var(--text-soft); font-size: 0.85rem; line-height: 1.5;">
+                Allocate 500 ETH for community grants and protocol maintenance.
+            </p>
+            
+            <div class="vote-grid">
+                <button class="btn btn-vote btn-for" onclick="vote(1)">Support</button>
+                <button class="btn btn-vote btn-against" onclick="vote(0)">Oppose</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
